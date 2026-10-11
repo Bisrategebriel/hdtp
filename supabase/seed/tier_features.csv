@@ -1,0 +1,92 @@
+feature_key,category,phase,title,min_tier,depth,level
+platform.tenants,A,0,Multi-tenant workspaces,E,deep,build
+platform.tiers,A,0,Tier switcher and feature flags,E,deep,build
+platform.theme,A,0,Theme engine,E,deep,build
+platform.personas,A,0,Role-based personas,E,deep,build
+platform.auth,A,0,Auth and access control,E,medium,build
+platform.flint_branding,A,0,Flint branding layer,E,deep,build
+platform.guided_tour,A,0,Guided tour mode,E,medium,support
+platform.demo_reset,A,0,Demo reset and seed engine,E,medium,support
+platform.outbox,A,0,Notification outbox,E,medium,support
+platform.audit_log,A,0,Audit log,G,medium,concept
+platform.language,A,0,Language switcher,E,light,concept
+platform.command_center,A,0,Program Command Center,E,medium,concept
+assessment.maturity,B,1,Digital maturity assessment,E,medium,interactive
+assessment.web_vitals,B,1,Website audit and Core Web Vitals,E,light,concept
+assessment.security,B,1,Cybersecurity assessment report,E,light,concept
+assessment.software_inventory,B,1,PMS and software inventory,E,light,concept
+assessment.competitors,B,1,Competitor benchmarking,G,light,concept
+assessment.swot,B,1,SWOT and technology gap report,E,medium,concept
+assessment.roadmap,B,1,24-month digital roadmap,E,medium,interactive
+assessment.roi,B,1,ROI forecast calculator,E,deep,build
+assessment.tier_recommendation,B,1,Tier recommendation engine,E,medium,interactive
+assessment.exec_summary_export,B,1,Executive summary export,G,light,concept
+website.site,C,2,Responsive mobile-first site,E,deep,interactive
+website.booking,C,2,Booking engine,E,deep,build
+website.payment,C,2,Mock secure payment gateway,E,deep,build
+website.loyalty_signup,C,2,Loyalty registration,G,medium,concept
+website.chatbot,C,2,AI chatbot widget,E,medium,interactive
+website.live_chat,C,2,Live chat,G,medium,concept
+website.whatsapp,C,2,WhatsApp click-to-chat,E,light,concept
+website.virtual_tour,C,2,Virtual hotel tour,G,medium,concept
+website.multi_language,C,2,Multi-language site,E,light,concept
+website.blog,C,2,Blog platform,E,medium,concept
+website.events,C,2,Event and meeting enquiries,E,medium,interactive
+website.gallery_reviews,C,2,Gallery and customer reviews,E,medium,interactive
+website.newsletter,C,2,Newsletter subscription,E,medium,concept
+website.seo,C,2,SEO and accessibility,E,medium,concept
+website.design_custom,C,2,Custom design preset,G,light,concept
+website.design_bespoke,C,2,Bespoke layout,P,light,concept
+hms.fo.reservations,D,3,Front Office: reservation dashboard,E,deep,build
+hms.fo.checkin_checkout,D,3,Front Office: check-in check-out and walk-ins,E,deep,build
+hms.fo.allocation_rules,D,3,Front Office: room allocation rules,E,medium,concept
+hms.hk.room_status,D,3,Housekeeping: schedule and room status,E,deep,build
+hms.hk.maintenance,D,3,Housekeeping: maintenance and inspections,E,medium,concept
+hms.fnb.pos,D,3,Restaurant: POS and kitchen tickets,E,medium,concept
+hms.fnb.inventory,D,3,Restaurant: inventory and billing,E,light,concept
+hms.finance.revenue,D,3,Finance: invoicing and revenue reports,E,medium,concept
+hms.finance.expenses,D,3,Finance: expense tracking and dashboard,G,medium,concept
+hms.hr.staff,D,3,Human Resources: staff attendance and leave,G,medium,concept
+hms.hr.payroll,D,3,Human Resources: payroll,G,light,concept
+hms.crm.profiles,D,3,CRM: guest profiles and feedback,G,medium,concept
+hms.crm.loyalty,D,3,CRM: loyalty and campaigns,G,medium,concept
+hms.integration_map,D,3,Module integration map,E,light,interactive
+hms.workflow_builder,D,3,Custom workflow builder,P,light,concept
+portal.home,E,4,Mobile guest portal,E,deep,interactive
+portal.online_checkin,E,4,Online pre-arrival check-in,E,deep,interactive
+portal.upsell,E,4,Pre-stay upsell,E,medium,concept
+portal.airport_pickup,E,4,Airport pickup booking,G,medium,concept
+portal.digital_key,E,4,Digital room key,G,light,concept
+portal.messaging,E,4,Guest messaging,E,medium,concept
+portal.room_service,E,4,Room service ordering,E,medium,interactive
+portal.dining_spa,E,4,Restaurant and spa booking,G,medium,concept
+portal.tours,E,4,Tour and event booking,G,medium,concept
+portal.concierge,E,4,Digital concierge,G,medium,concept
+portal.feedback,E,4,Post-stay feedback,E,medium,concept
+portal.loyalty,E,4,Loyalty deep integration,P,light,concept
+ai.chatbot_faq,F,5,AI chatbot: FAQs hotel info promotions,E,medium,interactive
+ai.chatbot_reservations,F,5,AI chatbot: reservations,E,medium,interactive
+ai.concierge,F,5,AI concierge,G,medium,interactive
+ai.forecasts,F,5,Occupancy and revenue forecasts,G,medium,interactive
+ai.demand,F,5,Guest demand prediction and seasonal trends,G,light,concept
+ai.next_best_action,F,5,AI marketing: next-best action,P,medium,concept
+ai.model_studio,F,5,Custom model showcase,P,light,concept
+ai.governance,F,5,AI governance panel,P,light,concept
+bi.executive_kpis,G,6,Executive KPI suite,E,deep,build
+bi.departmental,G,6,Departmental dashboards,G,medium,concept
+bi.operational,G,6,Operational dashboard,G,medium,interactive
+bi.drilldown,G,6,Drill-down,G,medium,concept
+bi.alerts,G,6,Exception alerts,G,medium,concept
+bi.benchmarks,G,6,Custom benchmarks,P,light,concept
+bi.export,G,6,Report export,E,light,concept
+bi.direct_vs_ota,G,6,Direct versus OTA commission view,E,medium,interactive
+support.helpdesk,H,7,Helpdesk portal,E,deep,build
+support.sla,H,7,SLA timers and escalation matrix,E,medium,build
+support.incident,H,7,Incident workflow and post-incident review,G,light,concept
+support.status,H,7,System health and status page,E,medium,interactive
+support.security_feed,H,7,Security monitoring feed,G,light,concept
+support.qbr,H,7,Quarterly business review,G,medium,interactive
+support.innovation_board,H,7,Innovation and roadmap board,E,medium,concept
+support.training,H,7,Training center,E,light,concept
+support.monthly_report,H,7,Monthly performance report,E,light,concept
+support.model_by_tier,H,7,Support model by tier,E,light,concept
