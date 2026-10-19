@@ -1,6 +1,6 @@
 /**
  * Deterministic seed generator (docs/PLAN.md §7).
- *   pnpm seed [--tenant lakeview|acacia|highland|all] [--seed 20261025] [--anchor YYYY-MM-DD]
+ *   pnpm seed [--tenant lakeview|acacia|highland|all] [--seed 20261025] [--anchor YYYY-MM-DD] [--env .env.cloud]
  * v1 (Day 1-2): catalog, tenants, properties, demo_state, persona users.
  * Transactional data (inventory, bookings, KPIs) lands on Day 3.
  */
@@ -12,9 +12,10 @@ import { stableId } from "./ids";
 import { PROFILES, type TenantProfile } from "./tenants/profiles";
 import { PERSONAS, personaEmail } from "../../src/features/platform/personas";
 
-config({ path: ".env.local" });
-
 const args = parseArgs(process.argv.slice(2));
+config({ path: args.env, quiet: true });
+console.log(`env=${args.env} db=${new URL(must("NEXT_PUBLIC_SUPABASE_URL")).host}`);
+
 const sql = postgres(must("DATABASE_URL"), { max: 1, onnotice: () => {} });
 const admin = createClient(must("NEXT_PUBLIC_SUPABASE_URL"), must("SUPABASE_SERVICE_ROLE_KEY"), {
   auth: { persistSession: false, autoRefreshToken: false },
@@ -116,12 +117,14 @@ function parseArgs(argv: string[]) {
     tenant: get("--tenant") ?? "all",
     seed: Number(get("--seed") ?? 20261025),
     anchor: get("--anchor") ?? new Date().toISOString().slice(0, 10),
+    // .env.cloud targets the hosted project; the default is the local stack.
+    env: get("--env") ?? ".env.local",
   };
 }
 
 function must(name: string): string {
   const v = process.env[name];
-  if (!v) throw new Error(`Missing ${name} in .env.local (see .env.example)`);
+  if (!v) throw new Error(`Missing ${name} in ${args.env} (see .env.example)`);
   return v;
 }
 
