@@ -39,7 +39,7 @@ Tags: `[Day]` · level **B** (Build) / **I** (Interactive) / **C** (Concept) / *
 - [x] [D5][B][E] Mock gateway UI: allowlist, decline, 3DS challenge, TEST MODE banner, token-only submit
 - [x] [D5][B][E] `create_booking` RPC + confirmation + portal token + outbox row
 - [x] [D5][B][E] `booking.spec.ts` (4 tests incl. 390 px)
-- [ ] **M2 check:** booking with 3DS card on prod creates reservation/folio/payment/outbox
+- [x] **M2 check:** booking with 3DS card on prod creates reservation/folio/payment/outbox — *19 Oct: 17/17 e2e on prod. Follow-up: cloud reseed takes ~18 min over this link (switch the seed writer to COPY before demo-morning reseeds)*
 
 ## Block 3: Hotel operations
 - [ ] [D6][B][E] Reservation list + calendar, filters, channel/online badges
