@@ -1,4 +1,19 @@
 import { expect, type Page } from "@playwright/test";
+import { createClient } from "@supabase/supabase-js";
+
+/** Service-role client for assertions on database state (never used by the app code path). */
+export function adminDb() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) throw new Error("Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY (E2E_ENV file).");
+  return createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
+}
+
+export async function tenantId(slug: string): Promise<string> {
+  const { data, error } = await adminDb().from("tenants").select("id").eq("slug", slug).single();
+  if (error) throw error;
+  return data.id;
+}
 
 export const TENANTS = ["lakeview", "acacia", "highland"] as const;
 

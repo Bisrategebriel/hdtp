@@ -1,8 +1,9 @@
 import { defineConfig, devices } from "@playwright/test";
 import { config } from "dotenv";
 
-// Presenter password for the specs; CI and prod runs set it in the environment instead.
-config({ path: ".env.local", quiet: true });
+// Presenter password and database keys for the specs. Prod runs point at the hosted
+// project: E2E_ENV=.env.cloud BASE_URL=https://... pnpm test:e2e --project=prod
+config({ path: process.env.E2E_ENV ?? ".env.local", quiet: true });
 
 // Local by default; `pnpm test:e2e --project=prod` with BASE_URL set targets the deployed demo.
 const baseURL = process.env.BASE_URL ?? "http://localhost:3000";
