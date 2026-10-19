@@ -4,7 +4,7 @@ Tags: `[Day]` · level **B** (Build) / **I** (Interactive) / **C** (Concept) / *
 
 ## Block 1: Foundation
 - [ ] [D1][S][E] git init, private GitHub repo (Flint org), move blueprint to `docs/`, commit plan files — *done except: repo is on a personal account, not the Flint org*
-- [ ] [D1][S][E] Supabase Free project (eu-central-1), Vercel Pro project (fra1), env vars, `.env.example` — *projects created 19 Oct; cloud migrations, seed and Vercel env vars pending*
+- [x] [D1][S][E] Supabase Free project (eu-central-1), Vercel Hobby project (fra1, decided 19 Oct), env vars, `.env.example` — *cloud migrated and seeded 19 Oct (`pnpm seed --env .env.cloud`)*
 - [ ] [D1][S][E] GitHub Action: daily Supabase keep-alive query (prevents Free-tier pausing)
 - [x] [D1][S][E] Scaffold Next.js + TS + Tailwind + shadcn/ui; `supabase init`; Playwright + Vitest; pnpm scripts
 - [x] [D1][S][E] Migration 0001: extensions, `app` schema, enums, `app.is_member()`

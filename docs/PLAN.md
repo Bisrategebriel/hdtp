@@ -44,7 +44,7 @@ The blueprint is sound in its main bet: build eight features properly, make abou
 
 ### 1.5 Commercial and legal risks the blueprint understates
 
-15. **Hosting terms.** Vercel Hobby is for non-commercial use only, and a Flint sales demo is commercial, so use **Vercel Pro**. **Supabase Free (decided)** works for the demo, with guards:
+15. **Hosting terms.** Vercel Hobby is for non-commercial use only, and a Flint sales demo is commercial, so the plan recommended **Vercel Pro**. **Decided 19 Oct: stay on Vercel Hobby (free)**; the owner accepts the terms risk. **Supabase Free (decided)** works for the demo, with guards:
     - **Pausing.** Free projects pause after about a week without activity, which would kill the demo link between client meetings. A scheduled GitHub Action runs a cheap read against the Supabase REST API every day as a keep-alive. Still open the prod URL the day before every demo; restoring a paused project from the dashboard takes a few minutes.
     - **500 MB database limit.** The full seed is estimated at about 150 to 250 MB, data and indexes together. Reseeding must `TRUNCATE` the tenant tables, not `DELETE` them, so dead rows don't pile up. Check the size in the dashboard after the first full seed (Day 3). If it gets close to the limit, shorten Lakeview's history before cutting tenants.
     - **No backups.** The free plan has no automatic backups, so the deterministic seed is the backup: `pnpm seed` rebuilds everything. Migrations live in git.
@@ -144,7 +144,7 @@ The six blocks are reconstructed (§1.1). Milestones are M1 to M5. Each day ends
 - Set up the repo and accounts:
   - `git init` and a private GitHub repo in the Flint org
   - move the blueprint to `docs/` and commit the plan files
-- Create the Supabase cloud project (Free, Frankfurt; see §1.5 item 15) and the Vercel project (Pro, fra1), and record their env vars.
+- Create the Supabase cloud project (Free, Frankfurt; see §1.5 item 15) and the Vercel project (Hobby by decision, fra1), and record their env vars.
 - Scaffold:
   - `create-next-app` (TypeScript, Tailwind, App Router, `src/`), pinning versions
   - `shadcn init` and `supabase init`
@@ -571,7 +571,7 @@ Total stage time is about 13 minutes, with 2 minutes of buffer for questions.
 | Wrong proposal numbers on screen | One `proposal.ts` file marked PLACEHOLDER; the proposal needed in `docs/` by Day 8 |
 | Venue or network failure | Three-level fallback, rehearsed twice |
 | Concept or mock mistaken for real | CONCEPT, Demo data and Illustrative labels, asserted by `nav-crawl.spec.ts` |
-| Supabase Free pauses or fills up; Vercel Hobby terms | Daily keep-alive Action, `TRUNCATE`-based reseed, size check on Day 3, local fallback; Vercel Pro |
+| Supabase Free pauses or fills up; Vercel Hobby terms | Daily keep-alive Action, `TRUNCATE`-based reseed, size check on Day 3, local fallback; Vercel Hobby accepted by the owner (19 Oct) |
 
 ## 12. Summary
 
@@ -588,9 +588,9 @@ Total stage time is about 13 minutes, with 2 minutes of buffer for questions.
 - Owner storyline first
 - all 14 days worked
 - ETB
-- Supabase Free (with keep-alive) and Vercel Pro
+- Supabase Free (with keep-alive) and Vercel Hobby (decided 19 Oct)
 
 **First three tasks, Monday 12 Oct**
-1. `git init`, a private GitHub repo in the Flint org, move the blueprint to `docs/` and commit the plan files. Create the Supabase Free (Frankfurt) and Vercel Pro (fra1) projects.
+1. `git init`, a private GitHub repo in the Flint org, move the blueprint to `docs/` and commit the plan files. Create the Supabase Free (Frankfurt) and Vercel Hobby (fra1) projects.
 2. Scaffold Next.js (TypeScript, Tailwind, App Router), shadcn/ui, `supabase init`, Playwright and Vitest, add the pnpm scripts, and deploy hello-world to Vercel.
 3. Migrations 0001 and 0002 (helpers, tenancy, tier_features, memberships) plus pgTAP `000_rls_meta` and `010_cross_tenant`, passing with `supabase test db`.
