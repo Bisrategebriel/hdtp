@@ -5,8 +5,10 @@ import { SUPABASE_URL } from "@/lib/env";
 /**
  * Service-role client. Bypasses RLS, so this is the ONLY file that may read
  * SUPABASE_SERVICE_ROLE_KEY. Allowed callers (docs/PLAN.md §3): public booking with the
- * tenant resolved from the URL slug, portal-token lookup, and presenter console actions
- * after verifyPresenter().
+ * tenant resolved from the URL slug, portal-token lookup, presenter console actions
+ * after verifyPresenter(), and two read-only lookups keyed by the URL slug:
+ * getFeatures() in features/platform/tenant.ts (tenant feature overrides) and the
+ * ConsoleBar (demo_state, rendered only after isPresenter()).
  */
 export function createAdminClient() {
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;

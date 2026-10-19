@@ -101,9 +101,12 @@ select throws_ok(
   'staff cannot create tenants'
 );
 
+-- No update policy on tenants, so RLS filters every row out: no error, nothing changes.
+update public.tenants set tier = 'premium';
+
 select is(
-  (with u as (update public.tenants set tier = 'premium' returning 1) select count(*) from u),
-  0::bigint,
+  (select array_agg(tier::text order by slug) from public.tenants where slug in ('tenant-a', 'tenant-b')),
+  array['growth', 'essential'],
   'staff cannot change any tenant''s tier directly'
 );
 

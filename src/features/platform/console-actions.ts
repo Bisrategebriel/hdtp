@@ -77,6 +77,8 @@ export async function resetDemo(slug: string) {
   const { data: tenant, error } = await admin.from("tenants").select("id").eq("slug", parsedSlug).single();
   if (error) throw error;
   const { error: rpcError } = await admin.rpc("demo_reset", { p_tenant: tenant.id });
+  // PGRST202: function not found. demo_reset() arrives with migration 0012 (Block 2).
+  if (rpcError?.code === "PGRST202") throw new Error("Reset is not available yet: it arrives with the transactional seed.");
   if (rpcError) throw rpcError;
   refresh();
 }

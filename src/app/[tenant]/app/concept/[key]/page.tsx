@@ -5,7 +5,7 @@ import { conceptSample, defaultSampleKind, type SampleKind } from "@/features/co
 import { ConceptVisual } from "@/features/concept/concept-visual";
 import { PHASES } from "@/config/phases";
 import { TIER_LABEL } from "@/config/tiers";
-import { createAdminClient } from "@/server/admin";
+import { createAnonClient } from "@/lib/supabase/anon";
 
 /** One template for every concept feature (docs/PLAN.md §8.3). */
 export default async function ConceptPage({ params }: PageProps<"/[tenant]/app/concept/[key]">) {
@@ -14,7 +14,8 @@ export default async function ConceptPage({ params }: PageProps<"/[tenant]/app/c
   const feature = (await getFeatures(tenant)).find((f) => f.key === key);
   if (!feature) notFound();
 
-  const { data: extra } = await createAdminClient()
+  // The catalog is public (tier_features_public_select), so no elevated client is needed.
+  const { data: extra } = await createAnonClient()
     .from("tier_features")
     .select("full_build, sample_kind")
     .eq("feature_key", key)

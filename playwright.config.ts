@@ -1,4 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
+import { config } from "dotenv";
+
+// Presenter password for the specs; CI and prod runs set it in the environment instead.
+config({ path: ".env.local", quiet: true });
 
 // Local by default; `pnpm test:e2e --project=prod` with BASE_URL set targets the deployed demo.
 const baseURL = process.env.BASE_URL ?? "http://localhost:3000";
@@ -16,5 +20,6 @@ export default defineConfig({
   ],
   webServer: process.env.BASE_URL
     ? undefined
-    : { command: "pnpm dev", url: baseURL, reuseExistingServer: true, timeout: 120_000 },
+    : // A production build: the latency budgets (B1 unlock < 1 s) are meaningless under dev compilation.
+      { command: "pnpm build && pnpm start", url: baseURL, reuseExistingServer: true, timeout: 300_000 },
 });

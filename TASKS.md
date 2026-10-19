@@ -3,24 +3,24 @@
 Tags: `[Day]` · level **B** (Build) / **I** (Interactive) / **C** (Concept) / **S** (support/infra) · tier **E/G/P**. The list is ordered by dependency.
 
 ## Block 1: Foundation
-- [ ] [D1][S][E] git init, private GitHub repo (Flint org), move blueprint to `docs/`, commit plan files
-- [ ] [D1][S][E] Supabase Free project (eu-central-1), Vercel Pro project (fra1), env vars, `.env.example`
+- [ ] [D1][S][E] git init, private GitHub repo (Flint org), move blueprint to `docs/`, commit plan files — *done except: repo is on a personal account, not the Flint org*
+- [ ] [D1][S][E] Supabase Free project (eu-central-1), Vercel Pro project (fra1), env vars, `.env.example` — *projects created 19 Oct; cloud migrations, seed and Vercel env vars pending*
 - [ ] [D1][S][E] GitHub Action: daily Supabase keep-alive query (prevents Free-tier pausing)
 - [x] [D1][S][E] Scaffold Next.js + TS + Tailwind + shadcn/ui; `supabase init`; Playwright + Vitest; pnpm scripts
-- [ ] [D1][S][E] Migration 0001: extensions, `app` schema, enums, `app.is_member()`
-- [ ] [D1][B][E] Migration 0002: tenants, properties, profiles, memberships, tier_features, overrides, demo_state + RLS
-- [ ] [D1][S][E] pgTAP `000_rls_meta.sql` + `010_cross_tenant.sql` green
+- [x] [D1][S][E] Migration 0001: extensions, `app` schema, enums, `app.is_member()`
+- [x] [D1][B][E] Migration 0002: tenants, properties, profiles, memberships, tier_features, overrides, demo_state + RLS
+- [x] [D1][S][E] pgTAP `000_rls_meta.sql` + `010_cross_tenant.sql` green (22 tests, local)
 - [ ] [D1][S][E] Hello-world deploy on Vercel
-- [ ] [D2][B][E] `proxy.ts` tenant resolution + tenant layout + 404 for unknown slug
-- [ ] [D2][B][E] Theme engine (CSS vars, 3 font pairs via next/font, wordmark logos)
+- [x] [D2][B][E] `proxy.ts` tenant resolution + tenant layout + 404 for unknown slug
+- [x] [D2][B][E] Theme engine (CSS vars, 3 font pairs via next/font, wordmark logos)
 - [x] [D2][S][E] Load `tier_features.csv` in seed; `pnpm catalog:types`
-- [ ] [D2][B][E] `getFeatures()`, `<Feature>`, `requireFeature()`, catalog-driven nav with lock states
-- [ ] [D2][B][E] Flint layer: console bar, footer, `/login`, presenter cookie, `flint-brand.ts`
-- [ ] [D2][B][E] Persona auth users + persona-switch server action
+- [x] [D2][B][E] `getFeatures()`, `<Feature>`, `requireFeature()`, catalog-driven nav with lock states
+- [x] [D2][B][E] Flint layer: console bar, footer, `/login`, presenter cookie, `flint-brand.ts`
+- [x] [D2][B][E] Persona auth users + persona-switch server action
 - [x] [D2][S][E] Adapter interfaces + mocks (payment, ai, messaging, digital-key)
-- [ ] [D2][C][E] Concept template route `app/concept/[key]` + locked variant
-- [ ] [D2][B][E] `platform.spec.ts`, `branding.spec.ts`
-- [ ] **M1 check:** switch hotel/tier on prod, unlock < 1 s, RLS green
+- [x] [D2][C][E] Concept template route `app/concept/[key]` + locked variant
+- [x] [D2][B][E] `platform.spec.ts`, `branding.spec.ts` (13 pass locally on a production build; portal case is `fixme` until Block 5)
+- [ ] **M1 check:** switch hotel/tier on prod, unlock < 1 s, RLS green — *met locally 19 Oct; prod pending first deploy*
 
 ## Block 2: Data and website booking
 - [ ] [D3][S][E] Migrations 0003–0012 with RLS + pgTAP per table (`020_anon`, `030_composite_fk`)

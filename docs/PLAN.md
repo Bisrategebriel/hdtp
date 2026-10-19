@@ -144,7 +144,7 @@ The six blocks are reconstructed (§1.1). Milestones are M1 to M5. Each day ends
 - Set up the repo and accounts:
   - `git init` and a private GitHub repo in the Flint org
   - move the blueprint to `docs/` and commit the plan files
-- Create the Supabase cloud project (Pro, Frankfurt) and the Vercel project (Pro, fra1), and record their env vars.
+- Create the Supabase cloud project (Free, Frankfurt; see §1.5 item 15) and the Vercel project (Pro, fra1), and record their env vars.
 - Scaffold:
   - `create-next-app` (TypeScript, Tailwind, App Router, `src/`), pinning versions
   - `shadcn init` and `supabase init`

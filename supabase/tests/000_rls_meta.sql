@@ -12,7 +12,8 @@ select plan(4);
 create temp table allowlist (relname name primary key) on commit drop;
 insert into allowlist values ('tenants'), ('profiles'), ('tier_features'), ('sla_policies');
 
-create temp view public_tables on commit drop as
+-- Temp views cannot take `on commit drop`; the rollback below removes it.
+create temp view public_tables as
 select c.oid, c.relname, c.relrowsecurity,
   exists (
     select 1 from pg_attribute a

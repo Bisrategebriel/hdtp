@@ -34,10 +34,13 @@ export function ConsoleBarControls({ tenants, slug, tier, month, persona }: Prop
     });
 
   const switchHotel = (next: string) => {
-    // Keep the current surface (site, app, stay) when moving to another hotel.
-    const rest = pathname.split("/").slice(2).join("/");
-    const surface = rest.startsWith("app") ? rest.split("/")[0] : "";
-    router.push(`/${next}${surface ? `/${surface}` : ""}`);
+    // Staff console: personas belong to one hotel, so sign in as the same role on the
+    // next hotel (otherwise the presenter lands on the 403 page). Site: plain navigation.
+    if (pathname.split("/")[2] === "app") {
+      run("Hotel switch", () => switchPersona(next, persona ?? "gm"));
+      return;
+    }
+    router.push(`/${next}`);
   };
 
   return (
