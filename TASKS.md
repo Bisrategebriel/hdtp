@@ -10,7 +10,7 @@ Tags: `[Day]` · level **B** (Build) / **I** (Interactive) / **C** (Concept) / *
 - [x] [D1][S][E] Migration 0001: extensions, `app` schema, enums, `app.is_member()`
 - [x] [D1][B][E] Migration 0002: tenants, properties, profiles, memberships, tier_features, overrides, demo_state + RLS
 - [x] [D1][S][E] pgTAP `000_rls_meta.sql` + `010_cross_tenant.sql` green (22 tests, local)
-- [ ] [D1][S][E] Hello-world deploy on Vercel
+- [x] [D1][S][E] Hello-world deploy on Vercel (https://hdtp-delta.vercel.app, functions pinned to fra1 in `vercel.json`)
 - [x] [D2][B][E] `proxy.ts` tenant resolution + tenant layout + 404 for unknown slug
 - [x] [D2][B][E] Theme engine (CSS vars, 3 font pairs via next/font, wordmark logos)
 - [x] [D2][S][E] Load `tier_features.csv` in seed; `pnpm catalog:types`
@@ -20,7 +20,7 @@ Tags: `[Day]` · level **B** (Build) / **I** (Interactive) / **C** (Concept) / *
 - [x] [D2][S][E] Adapter interfaces + mocks (payment, ai, messaging, digital-key)
 - [x] [D2][C][E] Concept template route `app/concept/[key]` + locked variant
 - [x] [D2][B][E] `platform.spec.ts`, `branding.spec.ts` (13 pass locally on a production build; portal case is `fixme` until Block 5)
-- [ ] **M1 check:** switch hotel/tier on prod, unlock < 1 s, RLS green — *met locally 19 Oct; prod pending first deploy*
+- [x] **M1 check:** switch hotel/tier on prod, unlock < 1 s, RLS green — *19 Oct: 13/13 e2e on prod; unlock < 1 s in 4 of 5 runs (one 1.39 s, likely a Hobby cold start). Follow-up: cut DB round trips on tier flip*
 
 ## Block 2: Data and website booking
 - [ ] [D3][S][E] Migrations 0003–0012 with RLS + pgTAP per table (`020_anon`, `030_composite_fk`)
