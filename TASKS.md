@@ -23,20 +23,22 @@ Tags: `[Day]` · level **B** (Build) / **I** (Interactive) / **C** (Concept) / *
 - [x] **M1 check:** switch hotel/tier on prod, unlock < 1 s, RLS green — *19 Oct: 13/13 e2e on prod; unlock < 1 s in 4 of 5 runs (one 1.39 s, likely a Hobby cold start). Follow-up: cut DB round trips on tier flip*
 
 ## Block 2: Data and website booking
-- [ ] [D3][S][E] Migrations 0003–0012 with RLS + pgTAP per table (`020_anon`, `030_composite_fk`)
-- [ ] [D3][S][E] Seed: rng, calendar (holidays/events), inventory and rates (Lakeview)
-- [ ] [D3][S][E] Seed: guests, reservations, folios, payments, hk_tasks, feedback, tickets, kb, site_content
-- [ ] [D3][S][E] Seed: `kpi_daily` 'before' rollup, forecasts, assessment, roadmap; m24 in-memory run → 'm24' rows
-- [ ] [D3][S][E] Storyline fixtures (room 512 departure, 3 free Deluxe King, breached/near-breach tickets)
-- [ ] [D3][S][E] Snapshot tables + `demo_reset()`; reset button wired
-- [ ] [D3][S][E] Vitest: seed determinism hash
-- [ ] [D4][I][E] Public site: home, rooms, offers, about, contact (themed, mobile-first)
-- [ ] [D4][I][E] Gallery, reviews, event form → `leads`
-- [ ] [D4][B][E] Booking step 1: search, `availability()`, rates
-- [ ] [D5][B][E] Booking: extras, guest details (Zod)
-- [ ] [D5][B][E] Mock gateway UI: allowlist, decline, 3DS challenge, TEST MODE banner, token-only submit
-- [ ] [D5][B][E] `create_booking` RPC + confirmation + portal token + outbox row
-- [ ] [D5][B][E] `booking.spec.ts`
+*Overrun rule applied 19 Oct: Block 2 cut lines 1 (Acacia/Highland get inventory, rates and content, no history) and 4 (site = home, rooms, booking; offers and reviews live on home). Extras are breakfast only.*
+- [x] [D3][S][E] Migrations 0003–0008 with RLS + pgTAP (`020_anon`, `030_composite_fk`, `040_booking`; 93 tests). 0009+ (messaging/AI, BI, support, assessment) come with their blocks
+- [x] [D3][S][E] Seed: rng, calendar (holidays/events), inventory and rates (all three hotels)
+- [x] [D3][S][E] Seed: guests, reservations, folios, payments, hk_tasks, site_content (Lakeview: 26k reservations)
+- [ ] [D3][S][E] Seed: feedback, tickets, kb → with their tables in Blocks 4 and 5
+- [ ] [D3][S][E] Seed: `kpi_daily` 'before' rollup, forecasts, assessment, roadmap; m24 in-memory run → 'm24' rows → Block 4
+- [x] [D3][S][E] Storyline fixtures: room 512 departure, 12 arrivals, 9 departures, Deluxe King free tonight (tickets → Block 4)
+- [x] [D3][S][E] Snapshot tables + `demo_reset()` (0.13 s); reset button wired
+- [x] [D3][S][E] Vitest: seed determinism hash, fixtures, no double-booking, channel mix, settled balances
+- [x] [D4][I][E] Public site: home (highlights, rooms, offers, reviews), rooms (themed, mobile-first)
+- [ ] [D4][I][E] Gallery page, event form → `leads` — *cut (Block 2 cut line 4); `leads` table exists*
+- [x] [D4][B][E] Booking step 1: search, `availability()`, rates
+- [x] [D5][B][E] Booking: breakfast extra, guest details (Zod)
+- [x] [D5][B][E] Mock gateway UI: allowlist, decline, 3DS challenge, TEST MODE banner, token-only submit
+- [x] [D5][B][E] `create_booking` RPC + confirmation + portal token + outbox row
+- [x] [D5][B][E] `booking.spec.ts` (4 tests incl. 390 px)
 - [ ] **M2 check:** booking with 3DS card on prod creates reservation/folio/payment/outbox
 
 ## Block 3: Hotel operations

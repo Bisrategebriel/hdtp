@@ -357,6 +357,8 @@ Concept screens do **not** get tables. Their sample data comes from the determin
 | 0011 | assessment | `assessments`, `assessment_scores` (dimension, score, peer_score, scenario), `roadmap_items` |
 | 0012 | demo_reset | `seed_snapshot_rooms`, `seed_snapshot_reservations`, `seed_snapshot_hk_tasks`, `seed_snapshot_tickets`; function `demo_reset(tenant)` |
 
+**As built (19 Oct).** Block 2 shipped 0003 inventory, 0004 bookings (with `availability()`, which needs the reservation tables), 0005 housekeeping, 0006 content and outbox (`site_content`, `leads`, `outbox`), 0007 booking RPCs (`quote_stay`, `create_booking`) and 0008 `demo_reset`. The remaining tables (messaging and AI, BI, support, assessment) and the `check_in`/`check_out`/`create_walk_in` RPCs take the next numbers as their blocks land, and extend `demo_reset()` with `create or replace`.
+
 Every tenant table has the following:
 - `id uuid`, `tenant_id uuid not null`, `origin text not null default 'demo'` (the seed writes `'seed'`) and `created_at`
 - an index on `tenant_id`
